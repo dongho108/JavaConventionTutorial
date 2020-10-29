@@ -1,6 +1,5 @@
 package dongho.woowacource.javaconvention.ex1;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -20,7 +19,7 @@ public class NumberBaseball {
         return digits;
     }
 
-    public boolean play(@NotNull Member com, Member usr) {
+    public boolean play(Member com, Member usr) {
         int strike=0;
         int ball=0;
         for (int i = 0; i < com.getSpaceList().length; i++) {
