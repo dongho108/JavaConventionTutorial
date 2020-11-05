@@ -5,11 +5,11 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RacingCar {
-    public static ArrayList<Integer> findWinner(Car[] cars, int n) {
+    public static ArrayList<Integer> findWinner(Car[] cars) {
         int winnerDistance=0;
         ArrayList<Integer> winners = new ArrayList<Integer>();
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < cars.length; i++) {
             if (winnerDistance < cars[i].getPosition()) {
                 winnerDistance = cars[i].getPosition();
                 winners.add(i);
@@ -26,7 +26,6 @@ public class RacingCar {
         for (int i = 0; i < cars.length; i++) {
             int distance = rand.nextInt(10);
             if (GO < distance) {
-//                System.out.println(i+"번 째 car 는 "+cars[i].getName());
                 cars[i].addPosition();
             }
         }
@@ -51,7 +50,7 @@ public class RacingCar {
         System.out.println("시도할 회수는 몇회인가요?");
         raceNum = sc.nextInt();
 
-        Car[] cars = new Car[raceNum];
+        Car[] cars = new Car[carNames.length];
         for (int i = 0; i < carNames.length; i++) {
             cars[i] = new Car(carNames[i]);
         }
@@ -59,11 +58,12 @@ public class RacingCar {
         System.out.println("실행결과");
         for (int i = 0; i < raceNum; i++) {
             race(cars);
+            System.out.println("");
         }
 
-        winners = findWinner(cars, raceNum);
+        winners = findWinner(cars);
         for (int i = 0; i < winners.size(); i++) {
-            System.out.print(cars[winners.get(i)]);
+            System.out.print(cars[winners.get(i)].getName());
             if (i < winners.size() - 1) {
                 System.out.print(", ");
             }
